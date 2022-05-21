@@ -38,14 +38,14 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role_id' => ['required', Rule::in(['1', '2'])],
+            'gender' => ['required', Rule::in(['L', 'P'])],
             'usia' => ['required', 'numeric', 'min:0'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role_id' => $request->role_id,
+            'gender' => $request->gender,
             'usia' => $request->usia,
             'password' => Hash::make($request->password),
         ]);

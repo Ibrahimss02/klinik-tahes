@@ -1,3 +1,5 @@
+@props(['user_type'])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -18,7 +20,11 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @if ($user_type == 'pasien')
+                @include('pasien.navigation')
+            @else
+                @include('dokter.navigation')
+            @endif
 
             <!-- Page Heading -->
             <header class="bg-white shadow">

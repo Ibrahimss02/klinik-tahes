@@ -9,7 +9,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" id="register-form">
             @csrf
 
             <!-- Name -->
@@ -46,9 +46,19 @@
             <!-- Selecting Role -->
             <div class="mt-4">
                 <x-label for="role_id" :value="__('Register Sebagai')" />
-                <select name="role_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
-                    <option value="1">Pasien</option>
-                    <option value="2">Dokter</option>
+                <select name="role_id" onchange="onChangeRole(this)"
+                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
+                    <option value="{{ route('register') }}">Pasien</option>
+                    <option value="{{ route('dokter.register') }}">Dokter</option>
+                </select>
+            </div>
+
+            <!-- Selecting Gender -->
+            <div class="mt-4">
+                <x-label for="gender" :value="__('Jenis Kelamin')" />
+                <select name="gender" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
                 </select>
             </div>
 
@@ -69,6 +79,13 @@
             <x-button class="block w-full mt-4">
                 {{ __('Buat Akun') }}
             </x-button>
+
+            <script>
+                function onChangeRole(selectObject) {
+                    var value = selectObject.value;
+                    document.getElementById('register-form').action = value;
+                }
+            </script>
         </form>
     </x-auth-card>
 </x-guest-layout>

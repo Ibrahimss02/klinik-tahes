@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('pasien.dashboard')->with('user_type', 'pasien');
+})->middleware(['web'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/dokter/dashboard', function () {
+    return view('dokter.dashboard')->with('user_type', 'dokter');
+})->middleware(['dokter'])->name('dokter.dashboard');
+
+Route::post('dokter/logout', [DokterController::class, 'destroy'])->middleware('dokter')
+    ->name('dokter.logout');
+
+require __DIR__ . '/auth.php';
