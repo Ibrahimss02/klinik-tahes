@@ -14,10 +14,17 @@ use Illuminate\Validation\Rules;
 
 class DokterController extends Controller
 {
-    public function index()
+    public function create()
     {
         return view('auth.login');
     } // end method
+
+    public function index()
+    {
+        $dokters = Dokter::all();
+
+        return view('pasien.reservasi.index', compact('dokters'))->with('user_type', 'pasien');
+    }
 
     public function dashboard()
     {
