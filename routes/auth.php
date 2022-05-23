@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -64,5 +65,12 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::resource('reservasi', DokterController::class);
+    Route::get('reservasi', [DokterController::class, 'index'])
+        ->name('reservasi.index');
+
+    Route::get('reservasi/{id_dokter}', [ReservasiController::class, 'reservasiDokter'])
+        ->name('reservasi');
+
+    Route::post('reservasi/{id_dokter}/create', [ReservasiController::class, 'createReservasi'])
+        ->name('reservasi.dokter');
 });
