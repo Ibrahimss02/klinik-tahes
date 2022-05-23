@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservasi', function (Blueprint $table) {
+        Schema::create('reservasis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pasien')->constrained('users')->onDelete('cascade');
             $table->foreignId('id_dokter')->constrained('dokters')->onDelete('cascade');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('nama_akhir');
             $table->string('tanggal');
             $table->string('pesan');
+            $table->boolean('selesai');
             $table->timestamps();
 
             // $table->foreign('id_pasien')->references('id')->on('users')->onDelete('cascade');
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservasi');
+        Schema::dropIfExists('reservasis');
     }
 };

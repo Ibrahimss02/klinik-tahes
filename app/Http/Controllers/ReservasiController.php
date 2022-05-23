@@ -39,7 +39,7 @@ class ReservasiController extends Controller
 
     public function listReservasi()
     {
-        $list_reservasi = Reservasi::where('id_pasien', Auth::user()->id)->get();
+        $list_reservasi = Reservasi::where('id_pasien', Auth::user()->id) -> get();
         $dokters = [];
         foreach ($list_reservasi as $reservasi) {
             $dokter_temp = Dokter::find($reservasi -> id_dokter);
@@ -55,6 +55,13 @@ class ReservasiController extends Controller
         $reservasi -> dokter_name = Dokter::findOrFail($reservasi -> id_dokter) -> name;
 
         return view('pasien.reservasi.detail', compact('reservasi'));
+    }
+
+    public function detailReservasiDokter($id_reservasi)
+    {
+        $reservasi = Reservasi::findOrFail($id_reservasi);
+
+        return view('dokter.reservasi.detail', compact('reservasi'));
     }
 
     public function updateReservasi($id_reservasi, Request $request)
@@ -76,5 +83,22 @@ class ReservasiController extends Controller
         $id_reservasi -> delete();
 
         return redirect()->route('reservasi.list');
+    }
+
+    public function indexDokter()
+    {
+        $list_reservasi = Reservasi::where('id_dokter', Auth::guard('dokter')->user()->id) -> where('selesai', false) -> get();
+        
+        return view('dokter.reservasi.index', compact('list_reservasi'));
+    }
+
+    public function selesaiReservasi($reservasi_id)
+    {
+        $reservasi = Reservasi::findOrFail($reservasi_id);
+
+        $reservasi -> selesai = true;
+        $reservasi -> save();
+
+        return redirect()->route('reservasi.dokter.index');
     }
 }

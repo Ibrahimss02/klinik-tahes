@@ -15,6 +15,6 @@ class DokterSeeder extends Seeder
      */
     public function run()
     {
-        Dokter::factory(1)->create();
+        Dokter::factory(15)->create();
     }
 }

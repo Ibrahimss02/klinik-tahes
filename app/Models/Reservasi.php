@@ -17,6 +17,7 @@ class Reservasi extends Model
         'nama_tengah',
         'nama_akhir',
         'tanggal',
-        'pesan'
+        'pesan',
+        'selesai',
     ];
 }

@@ -49,7 +49,7 @@
                 <select name="role_id" onchange="onChangeRole(this)"
                  class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
                     <option value="{{ route('register') }}">Pasien</option>
-                    <option value="{{ route('dokter.register') }}">Dokter</option>
+                    <option value="{{ route('dokter.register') }}" @if (old('role_id') == route('dokter.register')) selected @endif>Dokter</option>
                 </select>
             </div>
 
@@ -58,7 +58,7 @@
                 <x-label for="gender" :value="__('Jenis Kelamin')" />
                 <select name="gender" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full">
                     <option value="L">Laki-laki</option>
-                    <option value="P">Perempuan</option>
+                    <option value="P" @if (old('gender') == 'P') selected @endif>Perempuan</option>
                 </select>
             </div>
 
@@ -67,7 +67,7 @@
                 <x-label for="usia" :value="__('Usia')" />
 
                 <x-input id="usia" placeholder="Input Usia" class="block mt-1 w-full" type="number" min="0"
-                    name="usia" required />
+                    name="usia" :value="old('usia')" required />
             </div>
 
             <div class="flex items-center justify-start mt-4">

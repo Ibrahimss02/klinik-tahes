@@ -23,13 +23,19 @@ Route::get('/dashboard', function () {
     return view('pasien.dashboard')->with('user_type', 'pasien');
 })->middleware(['web'])->name('dashboard');
 
-Route::middleware('dokter')->prefix('dokter')->group(function() {
+Route::middleware('dokter')->prefix('dokter')->group(function () {
     Route::get('dashboard', function () {
         return view('dokter.dashboard')->with('user_type', 'dokter');
     })->name('dokter.dashboard');
 
     Route::get('reservasi', [ReservasiController::class, 'indexDokter'])
-        ->name('reservasi.index');
+        ->name('reservasi.dokter.index');
+
+    Route::get('reservasi/{reservasi_id}', [ReservasiController::class, 'detailReservasiDokter'])
+        ->name('reservasi.detail.dokter');
+
+    Route::post('reservasi/{reservasi_id}/complete', [ReservasiController::class, 'selesaiReservasi'])
+        ->name('reservasi.dokter.complete');
 });
 
 Route::post('dokter/logout', [DokterController::class, 'destroy'])->middleware('dokter')
