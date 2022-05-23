@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('reservasi.index')" :active="request()->routeIs('reservasi.index')">
                         {{ __('Reservasi') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('reservasi.index')" :active="request()->routeIs('reservasi.index')">
+                        {{ __('Resep') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -37,6 +40,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('reservasi.list')">
+                                {{ __('Daftar Reservasi') }}
+                            </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

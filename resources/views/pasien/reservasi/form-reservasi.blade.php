@@ -32,7 +32,7 @@
                                                     <label for="first-name"
                                                         class="block text-sm font-medium text-gray-700">Nama
                                                         Awal</label>
-                                                    <input type="text" name="first-name" id="first-name"
+                                                    <input type="text" name="first_name" id="first-name"
                                                         autocomplete="given-name"
                                                         class="mt-1 focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
@@ -42,7 +42,7 @@
                                                         class="block text-sm font-medium text-gray-700">Nama
                                                         Tengah <span class="text-xs text-red-600">Kosongkan jika tidak
                                                             ada</span></label>
-                                                    <input type="text" name="middle-name" id="middle-name"
+                                                    <input type="text" name="middle_name" id="middle-name"
                                                         autocomplete="additional-name"
                                                         class="mt-1 focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
@@ -51,7 +51,7 @@
                                                     <label for="last-name"
                                                         class="block text-sm font-medium text-gray-700">Nama
                                                         Akhir</label>
-                                                    <input type="text" name="last-name" id="last-name"
+                                                    <input type="text" name="last_name" id="last-name"
                                                         autocomplete="family-name"
                                                         class="mt-1 focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                                 </div>
@@ -71,7 +71,7 @@
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
                                                         <input datepicker datepicker-orientation="bottom" type="text"
-                                                            name="date" id="date"
+                                                            name="date" id="date" autocomplete="off"
                                                             class="border border-gray-300 text-gray-900 sm:text-sm rounded-none rounded-r-md focus:ring-[#00D9A5] focus:border-[#00D9A5] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#00D9A5] dark:focus:border-[#00D9A5]">
                                                     </div>
                                                 </div>

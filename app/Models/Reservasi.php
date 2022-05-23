@@ -13,6 +13,9 @@ class Reservasi extends Model
         'id_reservasi',
         'id_pasien',
         'id_dokter',
+        'nama_awal',
+        'nama_tengah',
+        'nama_akhir',
         'tanggal',
         'pesan'
     ];

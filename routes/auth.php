@@ -68,9 +68,19 @@ Route::middleware('auth')->group(function () {
     Route::get('reservasi', [DokterController::class, 'index'])
         ->name('reservasi.index');
 
+    Route::get('reservasi/list', [ReservasiController::class, 'listReservasi'])
+        ->name('reservasi.list');
+
     Route::get('reservasi/{id_dokter}', [ReservasiController::class, 'reservasiDokter'])
         ->name('reservasi');
 
     Route::post('reservasi/{id_dokter}/create', [ReservasiController::class, 'createReservasi'])
         ->name('reservasi.dokter');
+
+    Route::get('reservasi/list/{id_reservasi}', [ReservasiController::class, 'detailReservasi'])
+        ->name('reservasi.detail');
+
+    Route::post('reservasi/list/{id_reservasi}/update', [ReservasiController::class, 'updateReservasi']);
+
+    Route::post('reservasi/list/{id_reservasi}/delete', [ReservasiController::class, 'deleteReservasi']);
 });

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,14 @@ Route::get('/dashboard', function () {
     return view('pasien.dashboard')->with('user_type', 'pasien');
 })->middleware(['web'])->name('dashboard');
 
-Route::get('/dokter/dashboard', function () {
-    return view('dokter.dashboard')->with('user_type', 'dokter');
-})->middleware(['dokter'])->name('dokter.dashboard');
+Route::middleware('dokter')->prefix('dokter')->group(function() {
+    Route::get('dashboard', function () {
+        return view('dokter.dashboard')->with('user_type', 'dokter');
+    })->name('dokter.dashboard');
+
+    Route::get('reservasi', [ReservasiController::class, 'indexDokter'])
+        ->name('reservasi.index');
+});
 
 Route::post('dokter/logout', [DokterController::class, 'destroy'])->middleware('dokter')
     ->name('dokter.logout');

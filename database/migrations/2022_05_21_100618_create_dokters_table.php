@@ -22,6 +22,7 @@ return new class extends Migration
             $table->char('gender');
             $table->smallInteger('lama_bekerja')->default(0);
             $table->string('url_photo')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
