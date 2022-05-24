@@ -24,9 +24,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('login/dokter', [DokterController::class, 'create'])
-        ->name('dokter.login-form');
-
     Route::post('login/dokter', [DokterController::class, 'login'])
         ->name('dokter.login');
 
