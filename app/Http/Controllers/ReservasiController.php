@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservasiController extends Controller
 {
-    public function index()
-    {
-        
-    }
 
     public function reservasiDokter($dokter_id)
     {

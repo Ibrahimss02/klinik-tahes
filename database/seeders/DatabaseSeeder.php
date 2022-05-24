@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Resep;
 use App\Models\Reservasi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,8 +23,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this -> call(DokterSeeder::class);
-        // \App\Models\User::factory(10)->create();
+        $this -> call(DokterSeeder::class);
+        \App\Models\User::factory(10)->create();
         Reservasi::factory(15)->create();
+        $this -> call(ResepSeeder::class);
     }
 }

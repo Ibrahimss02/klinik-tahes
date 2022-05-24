@@ -1,5 +1,8 @@
-<x-pasien.pasien-app>
+<x-dokter.dokter-app>
     <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('List Resep dr. ') . Auth::guard('dokter')->user()->name }}
+        </h2>
     </x-slot>
 
     <div class="py-12">
@@ -11,21 +14,14 @@
                         <div class="container px-6 py-10 mx-auto">
                             <h1
                                 class="text-3xl font-semibold text-start text-gray-800 capitalize lg:text-4xl dark:text-white">
-                                Daftar Reservasi</h1>
+                                Daftar Reservasi Selesai</h1>
+                            <p class="mt-2 text-gray-500 dark:text-gray-300 group-hover:text-white">Pilih Reservasi yang
+                                sudah selesai untuk membuat sebuah resep.</p>
 
                             <div class="grid grid-cols-1 gap-x-10 gap-y-6 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
                                 @foreach ($list_reservasi as $reservasi)
-                                    <div 
-                                    @if (!$reservasi -> selesai)
-                                        onclick="location.href='{{ route('reservasi.detail', $reservasi->id) }}'"
-                                    @endif
-                                        class="
-                                        @if ($reservasi -> selesai)
-                                            hover:bg-[#00D9A5]
-                                        @else
-                                            hover:bg-red-500
-                                        @endif
-                                        px-12 py-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group dark:border-gray-700 dark:hover:border-transparent">
+                                    <div onclick="location.href='{{ route('resep.dokter.create', $reservasi -> id)}}'"
+                                        class="px-12 py-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-[#00D9A5] dark:border-gray-700 dark:hover:border-transparent">
                                         <div class="flex flex-col sm:-mx-4 sm:flex-row">
                                             <img class="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
                                                 src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
@@ -40,21 +36,6 @@
                                                 <p
                                                     class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
                                                     {{ $reservasi->tanggal }} </p>
-                                                <p
-                                                    class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-white">
-                                                    dr. {{ $reservasi->dokter_name }} </p>
-                                                <p
-                                                    class="mt-2 
-                                                        @if ($reservasi->selesai) text-green-500
-                                                        @else text-red-500 @endif capitalize dark:text-gray-300 group-hover:text-white">
-                                                    @if ($reservasi->selesai)
-                                                        Reservasi Selesai
-                                                    @else
-                                                        Reservasi dalam proses
-                                                    @endif
-                                                </p>
-
-
                                             </div>
                                         </div>
 
@@ -70,4 +51,4 @@
             </div>
         </div>
     </div>
-</x-pasien.pasien-app>
+</x-dokter.dokter-app>

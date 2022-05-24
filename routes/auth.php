@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\ResepController;
 use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,4 +84,10 @@ Route::middleware('auth')->group(function () {
     Route::post('reservasi/list/{id_reservasi}/update', [ReservasiController::class, 'updateReservasi']);
 
     Route::post('reservasi/list/{id_reservasi}/delete', [ReservasiController::class, 'deleteReservasi']);
+
+    Route::get('resep', [ResepController::class, 'indexPasien'])
+        ->name('resep.index');
+
+    Route::get('resep/{id_resep}', [ResepController::class, 'showPasienResep'])
+        ->name('resep.detail');
 });

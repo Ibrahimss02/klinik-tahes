@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\ResepController;
 use App\Http\Controllers\ReservasiController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,9 +37,29 @@ Route::middleware('dokter')->prefix('dokter')->group(function () {
 
     Route::post('reservasi/{reservasi_id}/complete', [ReservasiController::class, 'selesaiReservasi'])
         ->name('reservasi.dokter.complete');
+
+    Route::get('resep', [ResepController::class, 'index'])
+        ->name('resep.dokter.index');
+
+    Route::get('resep/create', [ResepController::class, 'showCompletedReservasi'])
+        ->name('resep.dokter.index.finished');
+
+    Route::get('resep/create/{reservasi_id}', [ResepController::class, 'create'])
+        ->name('resep.dokter.create');
+
+    Route::post('resep/create/{reservasi_id}/save', [ResepController::class, 'store'])
+        ->name('resep.dokter.create.save');
+
+    Route::get('resep/{resep_id}', [ResepController::class, 'show'])
+        ->name('resep.detail.dokter');
+
+    Route::post('resep/{resep_id}/update', [ResepController::class, 'update'])
+        ->name('resep.dokter.update');
+
+    Route::post('dokter/logout', [DokterController::class, 'destroy'])
+        ->name('dokter.logout');
 });
 
-Route::post('dokter/logout', [DokterController::class, 'destroy'])->middleware('dokter')
-    ->name('dokter.logout');
+
 
 require __DIR__ . '/auth.php';

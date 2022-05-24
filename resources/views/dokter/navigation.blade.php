@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('reservasi.dokter.index')" :active="request()->routeIs('reservasi.dokter.index')">
                         {{ __('Jadwal') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('resep.dokter.index')" :active="request()->routeIs('resep.dokter.index')">
+                        {{ __('Resep') }}
+                    </x-nav-link>
                 </div>
             </div>
 

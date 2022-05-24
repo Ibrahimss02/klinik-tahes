@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('reservasi.index')" :active="request()->routeIs('reservasi.index')">
                         {{ __('Reservasi') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('reservasi.index')" :active="request()->routeIs('reservasi.index')">
+                    <x-nav-link :href="route('resep.index')" :active="request()->routeIs('resep.index')">
                         {{ __('Resep') }}
                     </x-nav-link>
                 </div>
